@@ -50,10 +50,11 @@ class App extends Component {
 
    return(
      <div className="App">
-       <div>
+       <div className="body">
          <h1>Search for Recipes</h1>
          <input
            type="text"
+           id="text-search-box"
            placeholder="Search for a Recipe title"
            value={searchQuery}
            onChange={this.handleSearchChange}
