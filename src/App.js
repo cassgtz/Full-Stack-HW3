@@ -16,8 +16,6 @@ const recipeComponent = recipes.map( recipe => {
  return <Recipe key={recipe.title} recipe={recipe} />
 })*/
 
-
-// comment
 class App extends Component {
   // Constructor
  constructor(props){
@@ -25,28 +23,50 @@ class App extends Component {
   
    this.state = {
      searchQuery: "",
+     calories: "",
    };
  }
-
 
  // Handle search function
  handleSearchChange = (event) => {
    this.setState({ searchQuery: event.target.value});
  }
+
+ handleCaloriesChange = (event) => {
+  this.setState({ calories: event.target.value });
+}
+
   render(){
 
-
    const { searchQuery } = this.state;
+   const { calories } = this.state;
+   let lowerCalories = 0;
+   let uppperCalories = Infinity;
+
+   switch(calories){
+     case "200-600":
+       uppperCalories = 600;
+       break;
+     case "600-1000":
+       lowerCalories = 600;
+       uppperCalories = 1000;
+       break;
+     case "1000-2000":
+       lowerCalories = 1000;
+       uppperCalories = 2000;
+       break;
+   }
+
    const filteredRecipes = recipesJson.recipes.filter(recipe =>
-     recipe.title.toLocaleLowerCase().includes(searchQuery.toLowerCase())
+     recipe.title.toLocaleLowerCase().includes(searchQuery.toLowerCase()) &&
+     recipe.calories >= lowerCalories &&
+     recipe.calories <= uppperCalories
    );
 
 
    const recipeComponent = filteredRecipes.map(recipe =>
      (<Recipe key={recipe.title} recipe={recipe}/>)
    );
-
-
 
 
    return(
@@ -63,7 +83,17 @@ class App extends Component {
               onChange={this.handleSearchChange}
             />
             <div id="drop-down-options">
-
+              <div>
+              <label>Calories: </label>
+              <select className="calories" onChange={this.handleCaloriesChange}>
+                <option value="">All calories</option>
+                <option value="200-600">200-600</option>
+                <option value="600-1000">600-1000</option>
+                <option value="1000-2000">1000-2000</option>
+              </select>
+              </div>
+              <div></div>
+              <div></div>
             </div>
             <button>Search</button>
          </div>
