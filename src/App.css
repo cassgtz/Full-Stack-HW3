@@ -5,17 +5,7 @@
   align-items: center;
   max-width: 100%;
   padding: 2%;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 h1 {
@@ -25,9 +15,10 @@ h1 {
   text-align: center;
   min-height: 50%;
   font-size: calc(10px + 2vmin);
-  min-width: 100%;
-  max-width: 100%;
+  width: 100%;
   align-self: stretch;
+  justify-content: center;
+  align-items: center;
 }
 
 #text-search-box{
@@ -36,5 +27,7 @@ h1 {
   flex-wrap: wrap;
   align-content: stretch;
   margin-bottom: 5px;
+  padding: 1.5rem;
+  border-radius: 15px;
 }
 

@@ -5,15 +5,16 @@ import Recipe from "./components/recipes/Recipe"
 
 
 // console.log(recipesJson);
-const recipes = recipesJson.recipes;
+//const recipes = recipesJson.recipes;
 // console.log(recipes);
 
 
 // map function to create Recipe component for each JSON object in the array
+/*
 const recipeComponent = recipes.map( recipe => {
  // console.log(recipe);
  return <Recipe key={recipe.title} recipe={recipe} />
-})
+})*/
 
 
 // comment
