@@ -6,6 +6,8 @@
   max-width: 100%;
   padding: 2%;
   justify-content: center;
+  margin-right: 12px;
+  background-color:antiquewhite;
 }
 
 h1 {
@@ -19,7 +21,7 @@ h1 {
 }
 
 #text-search-box{
-  max-width: 100%;
+  width: 60%;
   display: flex;
   flex-wrap: wrap;
   align-content: stretch;
@@ -40,5 +42,11 @@ h1 {
   align-items: center;
   justify-content: center;
   padding: 2%;
+}
+
+#drop-down-options{
+  display: flex;
+  flex-direction: column;
+  
 }
 
