@@ -52,14 +52,21 @@ class App extends Component {
    return(
      <div className="App">
        <div className="body">
-         <h1>Search for Recipes</h1>
-         <input
-           type="text"
-           id="text-search-box"
-           placeholder="Search for a Recipe title"
-           value={searchQuery}
-           onChange={this.handleSearchChange}
-         />
+
+         <div id="search-section">
+            <h1>Search for Recipes!</h1>
+            <input
+              type="text"
+              id="text-search-box"
+              placeholder="Search for a Recipe title"
+              value={searchQuery}
+              onChange={this.handleSearchChange}
+            />
+            <div id="drop-down-options">
+
+            </div>
+            <button>Search</button>
+         </div>
 
 
          {recipeComponent}
