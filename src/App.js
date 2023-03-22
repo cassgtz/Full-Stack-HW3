@@ -103,7 +103,7 @@ class App extends Component {
             <input
               type="text"
               id="text-search-box"
-              placeholder="Search for a Recipe title"
+              placeholder="Search for a Recipe title..."
               value={searchQuery}
               onChange={this.handleSearchChange}
             />
@@ -111,7 +111,7 @@ class App extends Component {
               {/* Calories dropdown */}
               <div>
                 <label>Calories: </label>
-                <select className="calories" onChange={this.handleCaloriesChange}>
+                <select className="drop-down" onChange={this.handleCaloriesChange}>
                   <option value="">All calories</option>
                   <option value="200-600">200-600</option>
                   <option value="600-1000">600-1000</option>
@@ -121,7 +121,7 @@ class App extends Component {
               {/* Diet dropdown */}
               <div>
               <label>Diet Preference</label>
-              <select className="diet" onChange={this.handleDietChange}>
+              <select className="drop-down" onChange={this.handleDietChange}>
                 <option value="Any">Any</option>
                 <option value="Low-Fat">Low-Fat</option>
                 <option value="Low-Sodium">Low-Sodium</option>
@@ -135,7 +135,7 @@ class App extends Component {
                {/* Category dropdown */}
               <div>
               <label>Category</label>
-              <select className="category" onChange={this.handleCategoryChange}>
+              <select className="drop-down" onChange={this.handleCategoryChange}>
                 <option value="Any">Any</option>
                 <option value="Dessert">Dessert</option>
                 <option value="Entree">Entree</option>

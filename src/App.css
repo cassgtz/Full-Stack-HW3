@@ -29,12 +29,14 @@ h1 {
   padding: 0.5rem;
   border-radius: 15px;
   font-size: calc(8px + 1vmin);
+  margin-bottom: 3%;
 }
 
 #search-section{
   border: solid;
   border-width: 1px;
-  border-color: black;
+  border-color: lightgray;
+  background-color: white;
   width: 70%;
   height: fit-content;
   display: flex;
@@ -42,11 +44,82 @@ h1 {
   align-items: center;
   justify-content: center;
   padding: 2%;
+  margin: 2%;
 }
 
 #drop-down-options{
   display: flex;
   flex-direction: column;
-  
+  justify-content: space-between;
+  width: 40%;
 }
 
+#drop-down-options div{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4%;
+  position: relative;
+}
+
+#drop-down-options div label{
+  align-self: flex-start;
+  padding-right: 2%;
+  width: fit-content;
+  font-size: calc(8px + 1vmin);
+}
+
+.drop-down {
+  align-self: center;
+  width: fit-content;
+  border-radius: 8px;
+  font-size: calc(7px + 1vmin);
+  padding: 2%;
+  height: fit-content;
+}
+
+/* Style the arrow inside the select element: */
+.drop-down:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.drop-down.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  font-size: calc(8px + 1vmin);
+  padding: 2%;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
