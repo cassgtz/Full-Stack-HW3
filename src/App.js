@@ -4,10 +4,7 @@ import recipesJson from "./asset/data/recipe.json";
 import Recipe from "./components/recipes/Recipe"
 
 
-// console.log(recipesJson);
 const recipes = recipesJson.recipes;
-// console.log(recipes);
-
 
 // map function to create Recipe component for each JSON object in the array
 /*
@@ -20,18 +17,23 @@ class App extends Component {
   // Constructor
  constructor(props){
    super(props);
+   this._keyPressed = this._keyPressed.bind(this);
+   this._filterRecipes = this._filterRecipes.bind(this);
   
    this.state = {
+     filtersSet: false,
+     filteredRecipes: null,
      searchQuery: "",
      calories: "",
      diet: "Any",
      category: "Any",
    };
+
  }
 
-  // Handle search function
+  // Handle search functions
   handleSearchChange = (event) => {
-    this.setState({ searchQuery: event.target.value});
+    this.setState({ searchQuery: event.target.value });
   }
   
   handleCaloriesChange = (event) => {
@@ -45,11 +47,56 @@ class App extends Component {
   handleCategoryChange = (event) => {
     this.setState({ category: event.target.value });
   }
- 
+  
+  _filterRecipes(){
+    //console.log("filtering");
+    let lowerCalories = 0;
+    let uppperCalories = Infinity;
+
+   switch(this.state.calories){
+     case "200-600":
+       uppperCalories = 600;
+       break;
+     case "600-1000":
+       lowerCalories = 600;
+       uppperCalories = 1000;
+       break;
+     case "1000-2000":
+       lowerCalories = 1000;
+       uppperCalories = 2000;
+       break;
+   }
+
+    const filteredRecipes = recipes.filter(recipe =>
+      // Filtering title
+      recipe.title.toLowerCase().includes(this.state.searchQuery.toLowerCase()) &&
+       
+      // Filtering calories
+      recipe.calories >= lowerCalories &&
+      recipe.calories <= uppperCalories &&
+   
+      // Filtering diet
+      (this.state.diet === "Any" || recipe.dietLabel === this.state.diet) &&
+   
+      // Filtering category
+      (this.state.category === "Any" || recipe.recipeCategory === this.state.category)
+    );
+
+    this.setState({ filteredRecipes: filteredRecipes});
+    this.setState({filtersSet: true});
+  }
+
+  _keyPressed(event){
+    if(event.key === "Enter"){
+      this.setState({searchQuery: event.target.value});
+      //console.log(this.state.searchQuery);
+      this._filterRecipes();
+    }
+  } 
+
   render(){
-
-   const { searchQuery, calories, diet, category } = this.state;
-
+   const { searchQuery } = this.state;
+    /*
    let lowerCalories = 0;
    let uppperCalories = Infinity;
 
@@ -65,8 +112,10 @@ class App extends Component {
        lowerCalories = 1000;
        uppperCalories = 2000;
        break;
-   }
+   }*/
 
+   
+/*
    // Filtering all of the recipes
    const filteredRecipes = recipes.filter(recipe =>
      // Filtering title
@@ -81,18 +130,29 @@ class App extends Component {
 
      // Filtering category
      (category === "Any" || recipe.recipeCategory === category)
-   );
+   );*/
 
+/*
    const recipeComponent = filteredRecipes.map(recipe =>
      (<Recipe key={recipe.title} recipe={recipe}/>)
-   );
+   );*/
+
+   const recipeComponent = recipes.map(recipe =>
+    (<Recipe key={recipe.title} recipe={recipe}/>)
+  );
+  const filteredRecipeComponent = this.state.filteredRecipes && this.state.filteredRecipes.map(recipe =>
+    (<Recipe key={recipe.title} recipe={recipe}/>)
+  );
 
    return(
      <div className="App">
        <div className="body">
+
         <img id="logo" src="https://www.pngitem.com/pimgs/m/623-6238143_free-recipe-pedia-is-a-site-for-sharing.png" alt="Unavailable"/>
+
          <div id="search-section">
             <h1>Search for Recipes!</h1>
+
              {/* Search by title */}
              <div id="search-by-text">
               <input
@@ -101,9 +161,11 @@ class App extends Component {
                 placeholder="Search for a Recipe title..."
                 value={searchQuery}
                 onChange={this.handleSearchChange}
+                onKeyDown={this._keyPressed}
               />
               <img id="search-icon" src='https://st.depositphotos.com/2868925/3523/v/600/depositphotos_35237803-stock-illustration-search-icon-vector-set.jpg' alt="search icon"/>
              </div>
+
             <div id="drop-down-options">
               {/* Calories dropdown */}
               <div>
@@ -140,10 +202,16 @@ class App extends Component {
               </select>
               </div>
             </div>
-            <button>Search</button>
+
+            <button 
+              id='search-button'
+              onClick={this._filterRecipes}>
+                Search
+            </button>
+            
          </div>
 
-         {recipeComponent}
+         {this.state.filtersSet ? filteredRecipeComponent : recipeComponent}
 
        </div>
      </div>

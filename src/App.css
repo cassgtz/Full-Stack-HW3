@@ -97,3 +97,24 @@ h1 {
   width: 80px;
   height: 80px;
 }
+
+#search-button{
+  border-radius: 15px;
+  padding: 1.5%;
+  width: 20%;
+  background-color: dodgerblue;
+  color: white;
+  border-color: white;
+  border: none;
+  outline: none;
+  font-size: calc(8px + 1vmin);
+}
+
+#search-button:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#search-button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
