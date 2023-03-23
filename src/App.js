@@ -96,7 +96,7 @@ class App extends Component {
    return(
      <div className="App">
        <div className="body">
-
+        <img id="logo" src="https://i.pinimg.com/736x/ad/6b/06/ad6b06041d2a0048106f6fbcf7a4e827.jpg" alt="Unavailable"/>
          <div id="search-section">
             <h1>Search for Recipes!</h1>
              {/* Search by title */}
