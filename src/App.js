@@ -46,7 +46,6 @@ class App extends Component {
     this.setState({ category: event.target.value });
   }
  
-
   render(){
 
    const { searchQuery, calories, diet, category } = this.state;
@@ -77,21 +76,16 @@ class App extends Component {
      recipe.calories >= lowerCalories &&
      recipe.calories <= uppperCalories &&
 
-
      // Filtering diet
      (diet === "Any" || recipe.dietLabel === diet) &&
 
-
      // Filtering category
      (category === "Any" || recipe.recipeCategory === category)
-
-
    );
 
    const recipeComponent = filteredRecipes.map(recipe =>
      (<Recipe key={recipe.title} recipe={recipe}/>)
    );
-
 
    return(
      <div className="App">
@@ -100,13 +94,16 @@ class App extends Component {
          <div id="search-section">
             <h1>Search for Recipes!</h1>
              {/* Search by title */}
-            <input
-              type="text"
-              id="text-search-box"
-              placeholder="Search for a Recipe title..."
-              value={searchQuery}
-              onChange={this.handleSearchChange}
-            />
+             <div id="search-by-text">
+              <input
+                type="text"
+                id="text-search-box"
+                placeholder="Search for a Recipe title..."
+                value={searchQuery}
+                onChange={this.handleSearchChange}
+              />
+              <img id="search-icon" src='https://st.depositphotos.com/2868925/3523/v/600/depositphotos_35237803-stock-illustration-search-icon-vector-set.jpg' alt="search icon"/>
+             </div>
             <div id="drop-down-options">
               {/* Calories dropdown */}
               <div>
