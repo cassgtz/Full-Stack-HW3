@@ -7,7 +7,7 @@
   padding: 2%;
   justify-content: center;
   margin-right: 12px;
-  background-color:antiquewhite;
+  background-color:ivory;
 }
 
 h1 {
@@ -100,8 +100,8 @@ h1 {
 
 #search-button{
   border-radius: 15px;
-  padding: 1.5%;
-  width: 20%;
+  padding: 1%;
+  width: fit-content;
   background-color: dodgerblue;
   color: white;
   border-color: white;

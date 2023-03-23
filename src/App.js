@@ -208,9 +208,10 @@ class App extends Component {
               onClick={this._filterRecipes}>
                 Search
             </button>
-            
-         </div>
 
+         </div>
+         
+         {/* Show Results */}
          {this.state.filtersSet ? filteredRecipeComponent : recipeComponent}
 
        </div>
