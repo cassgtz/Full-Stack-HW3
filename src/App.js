@@ -96,7 +96,7 @@ class App extends Component {
    return(
      <div className="App">
        <div className="body">
-        <img id="logo" src="https://i.pinimg.com/736x/ad/6b/06/ad6b06041d2a0048106f6fbcf7a4e827.jpg" alt="Unavailable"/>
+        <img id="logo" src="https://www.pngitem.com/pimgs/m/623-6238143_free-recipe-pedia-is-a-site-for-sharing.png" alt="Unavailable"/>
          <div id="search-section">
             <h1>Search for Recipes!</h1>
              {/* Search by title */}
@@ -110,7 +110,7 @@ class App extends Component {
             <div id="drop-down-options">
               {/* Calories dropdown */}
               <div>
-                <label>Calories: </label>
+                <label>Calories</label>
                 <select className="drop-down" onChange={this.handleCaloriesChange}>
                   <option value="">All calories</option>
                   <option value="200-600">200-600</option>
